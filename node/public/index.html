@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Scientific Calculator Suite</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
+</head>
+<body>
 
+<div class="calc-app">
+  <header class="calc-header">
+    <div class="title"><strong>TCS iON Extended</strong> Scientific Calculator</div>
+    <div>
+      <select id="modeSelector">
+        <option value="SCIENTIFIC">Scientific</option>
+        <option value="STATISTICS">Statistics Mode</option>
+        <option value="EQUATION">Equation Solver</option>
+        <option value="PROGRAMMER">Programmer Mode</option>
+      </select>
+      <button id="themeToggle">Theme</button>
+    </div>
+  </header>
+
+  <div class="calc-main">
+    <div class="calc-left">
+      <div class="calc-display">
+        <div class="status-bar">
+          <span id="angleStatus">DEG</span>
+          <span id="memStatus">M: 0</span>
+        </div>
+        <div class="expr-display" id="exprDisplay"></div>
+        <div class="result-display" id="resultDisplay">0</div>
+      </div>
+
+      <div class="keypad">
+        <!-- Memory Row -->
+        <button onclick="handleBtn('MC')">MC</button>
+        <button onclick="handleBtn('MR')">MR</button>
+        <button onclick="handleBtn('MS')">MS</button>
+        <button onclick="handleBtn('M+')">M+</button>
+        <button onclick="handleBtn('M-')">M-</button>
+
+        <!-- Functions Row 1 -->
+        <button onclick="toggleAngleMode()" class="op" id="btnAngle">DEG</button>
+        <button onclick="handleBtn('sin(')">sin</button>
+        <button onclick="handleBtn('cos(')">cos</button>
+        <button onclick="handleBtn('tan(')">tan</button>
+        <button onclick="handleBtn('ln(')">ln</button>
+
+        <!-- Functions Row 2 -->
+        <button onclick="handleBtn('log(')">log</button>
+        <button onclick="handleBtn('sqrt(')">√</button>
+        <button onclick="handleBtn('^2')">x²</button>
+        <button onclick="handleBtn('^')">xʸ</button>
+        <button onclick="handleBtn('factorial(')">n!</button>
+
+        <!-- Numbers and Basic Operators -->
+        <button onclick="handleBtn('7')">7</button>
+        <button onclick="handleBtn('8')">8</button>
+        <button onclick="handleBtn('9')">9</button>
+        <button onclick="handleBtn('/')" class="op">÷</button>
+        <button onclick="handleBtn('CE')" class="action">CE</button>
+
+        <button onclick="handleBtn('4')">4</button>
+        <button onclick="handleBtn('5')">5</button>
+        <button onclick="handleBtn('6')">6</button>
+        <button onclick="handleBtn('*')" class="op">×</button>
+        <button onclick="handleBtn('AC')" class="action">AC</button>
+
+        <button onclick="handleBtn('1')">1</button>
+        <button onclick="handleBtn('2')">2</button>
+        <button onclick="handleBtn('3')">3</button>
+        <button onclick="handleBtn('-')" class="op">−</button>
+        <button onclick="handleBtn('(')">(</button>
+
+        <button onclick="handleBtn('0')">0</button>
+        <button onclick="handleBtn('.')">.</button>
+        <button onclick="handleBtn('pi')">π</button>
+        <button onclick="handleBtn('+')" class="op">+</button>
+        <button onclick="handleBtn(')')">)</button>
+
+        <button onclick="calculateResult()" class="equals">=</button>
+      </div>
+    </div>
+
+    <div class="calc-sidebar">
+      <h3>Calculation History</h3>
+      <div class="history-list" id="historyList"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/calculator-engine.js"></script>
+<script src="js/modules/statistics.js"></script>
+<script src="js/modules/matrix.js"></script>
+<script src="js/modules/equations.js"></script>
+<script src="js/modules/programmer.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
